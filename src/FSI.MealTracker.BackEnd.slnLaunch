@@ -1,0 +1,17 @@
+[
+  {
+    "Name": "Novo Perfil",
+    "Projects": [
+      {
+        "Path": "FSI.MealTracker.Api\\FSI.MealTracker.Api.csproj",
+        "Action": "Start",
+        "DebugTarget": "FSI.MealTracker.Api"
+      },
+      {
+        "Path": "FSI.MealTracker.Worker\\FSI.MealTracker.Worker.csproj",
+        "Action": "Start",
+        "DebugTarget": "FSI.MealTracker.Worker"
+      }
+    ]
+  }
+]

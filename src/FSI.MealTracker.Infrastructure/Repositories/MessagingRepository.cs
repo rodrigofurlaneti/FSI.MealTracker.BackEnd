@@ -45,10 +45,14 @@ namespace FSI.MealTracker.Infrastructure.Repositories
                 new
                 {
                     Action = ACTION_INSERT,
-                    entity.Name,
-                    entity.IsActive,
+                    OperationMessage = entity.OperationMessage,
+                    entity.QueueName,
+                    entity.MessageRequest,
+                    entity.MessageResponse,
+                    entity.ErrorMessage,
                     entity.CreatedAt,
-                    entity.UpdatedAt
+                    entity.UpdatedAt,
+                    entity.IsActive
                 },
                 commandType: CommandType.StoredProcedure
             );
@@ -62,10 +66,16 @@ namespace FSI.MealTracker.Infrastructure.Repositories
                 new
                 {
                     Action = ACTION_UPDATE,
+                    OperationMessage = entity.OperationMessage,
                     entity.Id,
-                    entity.Name,
-                    entity.IsActive,
-                    entity.UpdatedAt
+                    entity.QueueName,
+                    entity.MessageRequest,
+                    entity.MessageResponse,
+                    entity.IsProcessed,
+                    entity.ErrorMessage,
+                    entity.CreatedAt,
+                    entity.UpdatedAt,
+                    entity.IsActive
                 },
                 commandType: CommandType.StoredProcedure
             );
@@ -76,7 +86,7 @@ namespace FSI.MealTracker.Infrastructure.Repositories
             using var connection = CreateConnection();
             return await connection.ExecuteScalarAsync<bool>(
                 PROCEDURE_NAME,
-                new { Action = ACTION_DELETE, entity.Id },
+                new { OperationMessage = ACTION_DELETE, entity.Id },
                 commandType: CommandType.StoredProcedure
             );
         }

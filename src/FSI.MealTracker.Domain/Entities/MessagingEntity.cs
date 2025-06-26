@@ -2,7 +2,7 @@
 {
     public class MessagingEntity : BaseEntity
     {
-        public string ActionMessaging { get; set; } = string.Empty;
+        public string OperationMessage { get; set; } = string.Empty;
         public string QueueName { get; set; } = string.Empty;
         public string MessageRequest { get; set; } = string.Empty;
         public string MessageResponse { get; set; } = string.Empty;
@@ -13,7 +13,7 @@
 
         public MessagingEntity(string actionMessaging, string queueName, string messageRequest, bool isProcessed, string errorMessage)
         {
-            ActionMessaging = actionMessaging;
+            OperationMessage = actionMessaging;
             QueueName = queueName;
             MessageRequest = messageRequest;
             IsProcessed = isProcessed;
@@ -22,7 +22,7 @@
 
         public MessagingEntity(string actionMessaging, string queueName, string messageRequest, string messageResponse, bool isProcessed, string errorMessage)
         {
-            ActionMessaging = actionMessaging;
+            OperationMessage = actionMessaging;
             QueueName = queueName;
             MessageRequest = messageRequest;
             MessageResponse = messageResponse;

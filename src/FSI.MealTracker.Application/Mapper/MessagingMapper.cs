@@ -10,7 +10,7 @@ namespace FSI.MealTracker.Application.Mapper
             return new MessagingEntity
             {
                 Id = dto.Id,
-                ActionMessaging = dto.ActionMessaging,
+                OperationMessage = dto.OperationMessage,
                 QueueName = dto.QueueName,
                 MessageRequest = dto.MessageRequest,
                 MessageResponse = dto.MessageResponse,
@@ -27,7 +27,7 @@ namespace FSI.MealTracker.Application.Mapper
             return new MessagingDto
             {
                 Id = entity.Id,
-                ActionMessaging = entity.ActionMessaging,
+                OperationMessage = entity.OperationMessage,
                 QueueName = entity.QueueName,
                 MessageRequest = entity.MessageRequest,
                 MessageResponse = entity.MessageResponse,

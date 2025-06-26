@@ -185,13 +185,13 @@ namespace FSI.MealTracker.Api.Controllers
         [HttpPost("event/getall")]
         public async Task<IActionResult> MessageGetAllAsync()
         {
-            return await SendMessageAsync("getall", new FoodDto(), "POST - MessageGetAll", "user-queue");
+            return await SendMessageAsync("getall", new FoodDto(), "POST - MessageGetAll", "food-queue");
         }
 
         [HttpPost("event/getbyid/{id:long}")]
         public async Task<IActionResult> MessageGetByIdAsync(long id)
         {
-            return await SendMessageAsync("getbyid", new FoodDto { Id = id }, "POST - MessageGetById", "user-queue");
+            return await SendMessageAsync("getbyid", new FoodDto { Id = id }, "POST - MessageGetById", "food-queue");
         }
 
         [HttpPost("event/create")]
@@ -200,7 +200,7 @@ namespace FSI.MealTracker.Api.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            return await SendMessageAsync("create", dto, "POST - MessageCreate", "user-queue");
+            return await SendMessageAsync("create", dto, "POST - MessageCreate", "food-queue");
         }
 
         [HttpPut("event/update/{id:long}")]
@@ -213,7 +213,7 @@ namespace FSI.MealTracker.Api.Controllers
             if (existing is null)
                 return NotFound();
 
-            return await SendMessageAsync("update", dto, "PUT - MessageUpdate", "user-queue");
+            return await SendMessageAsync("update", dto, "PUT - MessageUpdate", "food-queue");
         }
 
         [HttpGet("event/result/{id:long}")]
@@ -238,7 +238,7 @@ namespace FSI.MealTracker.Api.Controllers
             if (existing is null)
                 return NotFound();
 
-            return await SendMessageAsync("delete", new FoodDto { Id = id }, "DELETE - MessageDelete", "user-queue");
+            return await SendMessageAsync("delete", new FoodDto { Id = id }, "DELETE - MessageDelete", "food-queue");
         }
 
         #endregion

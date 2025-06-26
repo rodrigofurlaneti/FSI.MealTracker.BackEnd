@@ -78,9 +78,11 @@ namespace FSI.MealTracker.Worker
 
                     UserDto expenseCategory = null;
 
+                    Console.WriteLine($"🔄 Switch executando ação: {envelope.Action.ToLowerInvariant()} | MessagingId: {envelope.MessagingId}");
+
                     switch (envelope.Action.ToLowerInvariant())
                     {
-                        case "create":
+                        case "insert":
                             createdId = await service.AddAsync(envelope.Payload);
                             break;
                         case "getall":
@@ -133,7 +135,7 @@ namespace FSI.MealTracker.Worker
             IEnumerable<UserDto> listUser, UserDto expenseCategory)
         {
             // ✅ The processing status of the record in the database to processed type create
-            if (envelope.MessagingId > 0 && envelope.Action.Equals("create", StringComparison.OrdinalIgnoreCase))
+            if (envelope.MessagingId > 0 && envelope.Action.Equals("insert", StringComparison.OrdinalIgnoreCase))
             {
                 await ProcessedMessageCreateAsync(messagingService, envelope, queueName, createdId);
             }
@@ -176,7 +178,7 @@ namespace FSI.MealTracker.Worker
                 await messagingService.UpdateAsync(new MessagingDto
                 {
                     Id = envelope.MessagingId,
-                    ActionMessaging = "Create",
+                    OperationMessage = "Insert",
                     QueueName = queueName,
                     MessageRequest = updatedContentRequest,
                     MessageResponse = string.Empty,
@@ -193,12 +195,12 @@ namespace FSI.MealTracker.Worker
                 await messagingService.UpdateAsync(new MessagingDto
                 {
                     Id = envelope.MessagingId,
-                    ActionMessaging = "Create",
+                    OperationMessage = "Insert",
                     QueueName = queueName,
                     MessageRequest = JsonSerializer.Serialize(envelope),
                     MessageResponse = string.Empty,
                     IsProcessed = false,
-                    ErrorMessage = "Failed to insert expense category into database.",
+                    ErrorMessage = "Failed to insert user into database.",
                     UpdatedAt = DateTime.Now,
                     IsActive = false
                 });
@@ -217,7 +219,7 @@ namespace FSI.MealTracker.Worker
                 await messagingService.UpdateAsync(new MessagingDto
                 {
                     Id = envelope.MessagingId,
-                    ActionMessaging = "GetAll",
+                    OperationMessage = "GetAll",
                     QueueName = queueName,
                     MessageRequest = string.Empty,
                     MessageResponse = updatedResponse,
@@ -234,12 +236,12 @@ namespace FSI.MealTracker.Worker
                 await messagingService.UpdateAsync(new MessagingDto
                 {
                     Id = envelope.MessagingId,
-                    ActionMessaging = "GetAll",
+                    OperationMessage = "GetAll",
                     QueueName = queueName,
                     MessageRequest = string.Empty,
                     MessageResponse = JsonSerializer.Serialize(listUser),
                     IsProcessed = false,
-                    ErrorMessage = "Failed to insert expense category into database.",
+                    ErrorMessage = "Failed to insert user into database.",
                     UpdatedAt = DateTime.Now,
                     IsActive = false
                 });
@@ -260,7 +262,7 @@ namespace FSI.MealTracker.Worker
                 await messagingService.UpdateAsync(new MessagingDto
                 {
                     Id = envelope.MessagingId,
-                    ActionMessaging = "GetById",
+                    OperationMessage = "GetById",
                     QueueName = queueName,
                     MessageRequest = updatedRequest,
                     MessageResponse = updatedResponse,
@@ -277,12 +279,12 @@ namespace FSI.MealTracker.Worker
                 await messagingService.UpdateAsync(new MessagingDto
                 {
                     Id = envelope.MessagingId,
-                    ActionMessaging = "GetById",
+                    OperationMessage = "GetById",
                     QueueName = queueName,
                     MessageRequest = JsonSerializer.Serialize(envelope),
                     MessageResponse = JsonSerializer.Serialize(expenseCategory),
                     IsProcessed = false,
-                    ErrorMessage = "Failed to insert expense category into database.",
+                    ErrorMessage = "Failed to insert user into database.",
                     UpdatedAt = DateTime.Now,
                     IsActive = false
                 });
@@ -303,7 +305,7 @@ namespace FSI.MealTracker.Worker
                 await messagingService.UpdateAsync(new MessagingDto
                 {
                     Id = envelope.MessagingId,
-                    ActionMessaging = "Update",
+                    OperationMessage = "Update",
                     QueueName = queueName,
                     MessageRequest = updatedContent,
                     MessageResponse = string.Empty,
@@ -320,12 +322,12 @@ namespace FSI.MealTracker.Worker
                 await messagingService.UpdateAsync(new MessagingDto
                 {
                     Id = envelope.MessagingId,
-                    ActionMessaging = "Update",
+                    OperationMessage = "Update",
                     QueueName = queueName,
                     MessageRequest = JsonSerializer.Serialize(envelope),
                     MessageResponse = string.Empty,
                     IsProcessed = false,
-                    ErrorMessage = "Failed to insert expense category into database.",
+                    ErrorMessage = "Failed to insert user into database.",
                     UpdatedAt = DateTime.Now,
                     IsActive = false
                 });
@@ -346,7 +348,7 @@ namespace FSI.MealTracker.Worker
                 await messagingService.UpdateAsync(new MessagingDto
                 {
                     Id = envelope.MessagingId,
-                    ActionMessaging = "Delete",
+                    OperationMessage = "Delete",
                     QueueName = queueName,
                     MessageRequest = updatedContent,
                     MessageResponse = string.Empty,
@@ -363,12 +365,12 @@ namespace FSI.MealTracker.Worker
                 await messagingService.UpdateAsync(new MessagingDto
                 {
                     Id = envelope.MessagingId,
-                    ActionMessaging = "Delete",
+                    OperationMessage = "Delete",
                     QueueName = queueName,
                     MessageRequest = JsonSerializer.Serialize(envelope),
                     MessageResponse = string.Empty,
                     IsProcessed = false,
-                    ErrorMessage = "Failed to insert expense category into database.",
+                    ErrorMessage = "Failed to insert user into database.",
                     UpdatedAt = DateTime.Now,
                     IsActive = false
                 });

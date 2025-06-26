@@ -41,6 +41,8 @@ namespace FSI.MealTracker.Api.Controllers.Base
                 string.Empty
             ));
 
+            _logger.LogInformation("📨 Mensagem enviada para fila: Action={Action} | ID={MessagingId} | Queue={Queue}", action, messagingId, queueName);
+
             envelope.MessagingId = messagingId;
 
             _publisher.Publish(envelope, queueName);
@@ -62,12 +64,12 @@ namespace FSI.MealTracker.Api.Controllers.Base
                 if (!result.IsProcessed)
                     return Accepted(new { message = "Still in processing", id });
 
-                var response = deserializeCallback(result.Action, result.MessageResponse);
+                var response = deserializeCallback(result.OperationMessage, result.MessageResponse);
 
                 return Ok(new
                 {
                     id = result.Id,
-                    originalAction = result.Action,
+                    originalAction = result.OperationMessage,
                     processed = result.IsProcessed,
                     response
                 });
