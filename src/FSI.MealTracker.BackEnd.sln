@@ -1,9 +1,45 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36202.13 d17.14
+VisualStudioVersion = 17.14.36202.13
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FSI.MealTracker.Domain", "FSI.MealTracker.Domain\FSI.MealTracker.Domain.csproj", "{5BDCE201-ECF5-4E31-ADC1-D667D4DAAC66}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FSI.MealTracker.Application", "FSI.MealTracker.Application\FSI.MealTracker.Application.csproj", "{24C3C249-3624-426C-A40F-2604C736B6F5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FSI.MealTracker.Infrastructure", "FSI.MealTracker.Infrastructure\FSI.MealTracker.Infrastructure.csproj", "{CE6FAC0D-FB2C-42B5-83D5-F8A93FEF4CBA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FSI.MealTracker.Api", "FSI.MealTracker.Api\FSI.MealTracker.Api.csproj", "{94D9F478-E546-4166-B534-E1E6033AA62E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FSI.MealTracker.Worker", "FSI.MealTracker.Worker\FSI.MealTracker.Worker.csproj", "{8551A5EC-2C5E-48EC-82F3-1164ACCCA640}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5BDCE201-ECF5-4E31-ADC1-D667D4DAAC66}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5BDCE201-ECF5-4E31-ADC1-D667D4DAAC66}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5BDCE201-ECF5-4E31-ADC1-D667D4DAAC66}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5BDCE201-ECF5-4E31-ADC1-D667D4DAAC66}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24C3C249-3624-426C-A40F-2604C736B6F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24C3C249-3624-426C-A40F-2604C736B6F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24C3C249-3624-426C-A40F-2604C736B6F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24C3C249-3624-426C-A40F-2604C736B6F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE6FAC0D-FB2C-42B5-83D5-F8A93FEF4CBA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE6FAC0D-FB2C-42B5-83D5-F8A93FEF4CBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE6FAC0D-FB2C-42B5-83D5-F8A93FEF4CBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE6FAC0D-FB2C-42B5-83D5-F8A93FEF4CBA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{94D9F478-E546-4166-B534-E1E6033AA62E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94D9F478-E546-4166-B534-E1E6033AA62E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94D9F478-E546-4166-B534-E1E6033AA62E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94D9F478-E546-4166-B534-E1E6033AA62E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8551A5EC-2C5E-48EC-82F3-1164ACCCA640}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8551A5EC-2C5E-48EC-82F3-1164ACCCA640}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8551A5EC-2C5E-48EC-82F3-1164ACCCA640}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8551A5EC-2C5E-48EC-82F3-1164ACCCA640}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection

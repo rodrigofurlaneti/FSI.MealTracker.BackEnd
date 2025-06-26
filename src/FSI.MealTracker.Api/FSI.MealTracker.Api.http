@@ -1,0 +1,6 @@
+@FSI.MealTracker.Api_HostAddress = http://localhost:5101
+
+GET {{FSI.MealTracker.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
