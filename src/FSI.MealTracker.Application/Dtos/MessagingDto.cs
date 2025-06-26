@@ -3,7 +3,7 @@
     public class MessagingDto
     {
         public long Id { get; set; }
-        public string Action { get; set; } = string.Empty;
+        public string ActionMessaging { get; set; } = string.Empty;
         public string QueueName { get; set; } = string.Empty;
         public string MessageRequest { get; set; } = string.Empty;
         public string MessageResponse { get; set; } = string.Empty;
@@ -23,18 +23,18 @@
             Id = id;
         }
 
-        public MessagingDto(string action, string queueName, string messageRequest, bool isProcessed, string errorMessage)
+        public MessagingDto(string actionMessaging, string queueName, string messageRequest, bool isProcessed, string errorMessage)
         {
-            Action = action;
+            ActionMessaging = actionMessaging;
             QueueName = queueName;
             MessageRequest = messageRequest;
             IsProcessed = isProcessed;
             ErrorMessage = errorMessage;
         }
 
-        public MessagingDto(string action, string queueName, string messageRequest, string messageResponse, bool isProcessed, string errorMessage)
+        public MessagingDto(string actionMessaging, string queueName, string messageRequest, string messageResponse, bool isProcessed, string errorMessage)
         {
-            Action = action;
+            ActionMessaging = actionMessaging;
             QueueName = queueName;
             MessageRequest = messageRequest;
             MessageResponse = messageResponse;
