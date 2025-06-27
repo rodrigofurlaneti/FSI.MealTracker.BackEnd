@@ -1,8 +1,12 @@
-﻿namespace FSI.MealTracker.Application.Dtos
+﻿using System.Text.Json.Serialization;
+
+namespace FSI.MealTracker.Application.Dtos
 {
     public class FoodDto : BaseDto
     {
-        public int CaloriesPerPortion;
-        public string StandardPortion;
+        [JsonPropertyName("caloriesPerPortion")]
+        public int CaloriesPerPortion { get; set; }
+        [JsonPropertyName("standardPortion")]
+        public string StandardPortion { get; set; } = string.Empty;
     }
 }

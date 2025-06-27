@@ -8,6 +8,7 @@ using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 using System.Text;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace FSI.MealTracker.Worker
 {
@@ -212,7 +213,7 @@ namespace FSI.MealTracker.Worker
         {
             if (listFood != null)
             {
-                var updatedResponse = JsonSerializer.Serialize(listFood);
+                var updatedResponse = JsonSerializer.Serialize(listFood, jsonOptions);
 
                 await messagingService.UpdateAsync(new MessagingDto
                 {
@@ -376,5 +377,11 @@ namespace FSI.MealTracker.Worker
                 Console.WriteLine($"❌ Failed to process message ID {envelope.MessagingId}: creation returned null.");
             }
         }
+
+        private static readonly JsonSerializerOptions jsonOptions = new()
+        {
+            PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
+        };
     }
 }
